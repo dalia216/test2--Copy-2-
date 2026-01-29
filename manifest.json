@@ -1,0 +1,41 @@
+{
+    "name": "NoorEldean Coaching",
+    "short_name": "NoorEldean",
+    "description": "منصة التدريب الأونلاين الأولى للشباب العربي - كوتشينج تغذية وتمارين",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "theme_color": "#2563eb",
+    "orientation": "portrait-primary",
+    "lang": "ar",
+    "dir": "rtl",
+    "icons": [
+        {
+            "src": "https://i.postimg.cc/6qqJH3yq/cmise2fh3007d01kqbxjx7thg-Gemini-Generated-Imagem9sp9rm9sp9rm9sp-Edited-removebg-preview-2-LI5k-TU.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "any maskable"
+        },
+        {
+            "src": "https://i.postimg.cc/6qqJH3yq/cmise2fh3007d01kqbxjx7thg-Gemini-Generated-Imagem9sp9rm9sp9rm9sp-Edited-removebg-preview-2-LI5k-TU.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "any maskable"
+        }
+    ],
+    "categories": ["fitness", "health", "lifestyle"],
+    "shortcuts": [
+        {
+            "name": "حاسبة السعرات",
+            "short_name": "سعرات",
+            "description": "احسب احتياجك اليومي من السعرات",
+            "url": "/calories-calculator.html"
+        },
+        {
+            "name": "NoorEldean AI",
+            "short_name": "AI",
+            "description": "مساعدك الذكي للتغذية والتمارين",
+            "url": "/nooreldean-ai.html"
+        }
+    ]
+}

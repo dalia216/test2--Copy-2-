@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>طرق الدفع | NoorEldean Coaching</title>
+    <meta name="description"
+        content="طرق الدفع المتاحة للاشتراك في باقات التدريب - انستا باي، المحافظ الإلكترونية، فيزا، وتقسيط البنوك. دفع آمن ومؤمن.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://nooreldeancoaching.tech/payment.html">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="https://i.postimg.cc/6qqJH3yq/cmise2fh3007d01kqbxjx7thg-Gemini-Generated-Imagem9sp9rm9sp9rm9sp-Edited-removebg-preview-2-LI5k-TU.png">
+    <link rel="apple-touch-icon" href="https://i.postimg.cc/6qqJH3yq/cmise2fh3007d01kqbxjx7thg-Gemini-Generated-Imagem9sp9rm9sp9rm9sp-Edited-removebg-preview-2-LI5k-TU.png">
+    <meta name="theme-color" content="#2563eb">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- AOS - Animate On Scroll Library -->
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .payment-page {
+            padding-top: 100px;
+            padding-bottom: 80px;
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0e7ff 100%);
+            min-height: 100vh;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Decorative background elements */
+        .payment-page::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            right: -100px;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(37, 99, 235, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .payment-page::after {
+            content: '';
+            position: absolute;
+            bottom: -100px;
+            left: -100px;
+            width: 350px;
+            height: 350px;
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .payment-header {
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .payment-header h1 {
+            font-size: 2.8rem;
+            font-weight: 900;
+            color: #1e40af;
+            margin-bottom: 15px;
+        }
+
+        .payment-header p {
+            font-size: 1.15rem;
+            color: #64748b;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        .kashier-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+            color: white;
+            padding: 14px 30px;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 700;
+            margin-top: 25px;
+            box-shadow: 0 8px 25px rgba(37, 99, 235, 0.35);
+            animation: pulse-shadow 2s infinite;
+        }
+
+        @keyframes pulse-shadow {
+            0%, 100% { box-shadow: 0 8px 25px rgba(37, 99, 235, 0.35); }
+            50% { box-shadow: 0 8px 35px rgba(37, 99, 235, 0.5); }
+        }
+
+        .payment-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            max-width: 950px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .payment-card {
+            background: white;
+            border-radius: 24px;
+            padding: 40px 30px;
+            text-align: center;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .payment-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #2563eb, #7c3aed, #2563eb);
+            background-size: 200% 100%;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .payment-card:hover::before {
+            opacity: 1;
+            animation: gradient-flow 2s linear infinite;
+        }
+
+        @keyframes gradient-flow {
+            0% { background-position: 0% 0%; }
+            100% { background-position: 200% 0%; }
+        }
+
+        .payment-card:hover {
+            transform: translateY(-12px) scale(1.02);
+            box-shadow: 0 25px 50px rgba(37, 99, 235, 0.2);
+            border-color: #2563eb;
+        }
+
+        .payment-icon {
+            width: 90px;
+            height: 90px;
+            background: linear-gradient(135deg, #f0f4ff 0%, #e0e7ff 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            font-size: 40px;
+            transition: all 0.4s ease;
+            box-shadow: 0 5px 20px rgba(37, 99, 235, 0.15);
+        }
+
+        .payment-card:hover .payment-icon {
+            transform: scale(1.1) rotate(5deg);
+            background: linear-gradient(135deg, #dbeafe 0%, #c7d2fe 100%);
+        }
+
+        .payment-card h3 {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #1f2937;
+            margin-bottom: 15px;
+            transition: color 0.3s ease;
+        }
+
+        .payment-card:hover h3 {
+            color: #2563eb;
+        }
+
+        .payment-card p {
+            font-size: 1rem;
+            color: #64748b;
+            line-height: 1.8;
+            margin-bottom: 22px;
+        }
+
+        .payment-badge {
+            background: linear-gradient(135deg, #dcfce7 0%, #bbf7d0 100%);
+            color: #166534;
+            padding: 10px 22px;
+            border-radius: 50px;
+            font-size: 0.95rem;
+            font-weight: 700;
+            display: inline-block;
+            box-shadow: 0 3px 10px rgba(22, 101, 52, 0.15);
+            transition: all 0.3s ease;
+        }
+
+        .payment-card:hover .payment-badge {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(22, 101, 52, 0.25);
+        }
+
+        .installment-note {
+            background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+            border-radius: 20px;
+            padding: 30px 35px;
+            max-width: 850px;
+            margin: 50px auto 0;
+            text-align: center;
+            border: 2px solid #3b82f6;
+            position: relative;
+            z-index: 1;
+            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.15);
+        }
+
+        .installment-note h4 {
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: #1e40af;
+            margin-bottom: 12px;
+        }
+
+        .installment-note p {
+            color: #1e3a8a;
+            font-size: 1.05rem;
+            line-height: 1.7;
+        }
+
+        .steps-section {
+            max-width: 850px;
+            margin: 60px auto 0;
+            background: white;
+            border-radius: 24px;
+            padding: 45px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+            position: relative;
+            z-index: 1;
+        }
+
+        .steps-section h2 {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: #1f2937;
+            margin-bottom: 35px;
+            text-align: center;
+        }
+
+        .step-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 22px;
+            margin-bottom: 28px;
+            padding: 20px;
+            border-radius: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .step-item:hover {
+            background: linear-gradient(135deg, #f0f4ff 0%, #e0e7ff 100%);
+            transform: translateX(-5px);
+        }
+
+        .step-number {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            font-weight: 800;
+            flex-shrink: 0;
+            box-shadow: 0 5px 15px rgba(37, 99, 235, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .step-item:hover .step-number {
+            transform: scale(1.1);
+        }
+
+        .step-content h4 {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: #1f2937;
+            margin-bottom: 6px;
+        }
+
+        .step-content p {
+            color: #64748b;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        .cta-section {
+            text-align: center;
+            margin-top: 55px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+            color: white;
+            padding: 20px 55px;
+            font-size: 1.25rem;
+            font-weight: 800;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 10px 35px rgba(37, 99, 235, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .cta-btn:hover::before {
+            left: 100%;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 20px 50px rgba(37, 99, 235, 0.5);
+        }
+
+        @media (max-width: 768px) {
+            .payment-header h1 {
+                font-size: 2rem;
+            }
+
+            .payment-card {
+                padding: 30px 22px;
+            }
+
+            .steps-section {
+                padding: 30px 20px;
+            }
+
+            .step-item {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <input type="checkbox" id="menuToggle">
+    
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container navbar-content">
+            <a href="index.html" class="logo">
+                <img src="https://i.postimg.cc/6qqJH3yq/cmise2fh3007d01kqbxjx7thg-Gemini-Generated-Imagem9sp9rm9sp9rm9sp-Edited-removebg-preview-2-LI5k-TU.png" alt="NoorEldean Logo" class="logo-img" width="70" height="70">
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html" onclick="document.getElementById('menuToggle').checked=false">🏠 الرئيسية</a></li>
+                <li><a href="about.html">👤 مين نور الدين</a></li>
+                <li><a href="index.html#pricing" onclick="document.getElementById('menuToggle').checked=false">💰 الخطط</a></li>
+                <li class="nav-dropdown">
+                    <a href="javascript:void(0)">⚡ الخدمات <span class="dropdown-arrow">▼</span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="calories-calculator.html">🔥 حاسبة السعرات</a></li>
+                        <li><a href="meal-calculator.html">🍽️ حساب سعرات يومك</a></li>
+                        <li><a href="alternatives-calculator.html">🔄 حاسبة البدائل</a></li>
+                        <li><a href="1rm-calculator.html">💪 حاسبة القوة (1RM)</a></li>
+                        <li><a href="nooreldean-ai.html">🤖 NoorEldean AI</a></li>
+                    </ul>
+                </li>
+                <li><a href="ebooks.html">📚 E-Books</a></li>
+                <li><a href="payment.html" class="active">💳 طرق الدفع</a></li>
+                <li><a href="contact.html">📞 اتصل بنا</a></li>
+            </ul>
+            <label for="menuToggle" class="menu-icon" aria-label="فتح القائمة">
+                <span></span>
+                <span></span>
+                <span></span>
+            </label>
+        </div>
+    </nav>
+
+    <!-- Payment Section -->
+    <section class="payment-page">
+        <div class="container">
+            <div class="payment-header">
+                <h1>💳 طرق الدفع المتاحة</h1>
+                <p>اختار طريقة الدفع اللي تناسبك وابدأ رحلة التغيير فوراً - كل الطرق آمنة ومؤمنة</p>
+                <div class="kashier-badge">
+                    <span>🔒</span>
+                    <span>مدعوم من Kashier - بوابة دفع آمنة 100%</span>
+                </div>
+            </div>
+
+            <div class="payment-grid">
+                <div class="payment-card">
+                    <div class="payment-icon">🏦</div>
+                    <h3>انستا باي</h3>
+                    <p>ادفع بسهولة عن طريق تطبيق البنك بتاعك - سريع وآمن ومن غير أي رسوم إضافية</p>
+                    <div class="payment-badge">✅ فوري ومجاني</div>
+                </div>
+
+                <div class="payment-card">
+                    <div class="payment-icon">📱</div>
+                    <h3>المحافظ الإلكترونية</h3>
+                    <p>فودافون كاش، اتصالات كاش، أورانج كاش، وي باي - اختار محفظتك وحول بسهولة</p>
+                    <div class="payment-badge">✅ كل المحافظ متاحة</div>
+                </div>
+
+                <div class="payment-card">
+                    <div class="payment-icon">💳</div>
+                    <h3>فيزا / ماستركارد / ميزة</h3>
+                    <p>ادفع بأي كارت بنكي - فيزا، ماستركارد، أو ميزة - بكل أمان عبر بوابة Kashier</p>
+                    <div class="payment-badge">✅ آمن 100%</div>
+                </div>
+
+                <div class="payment-card">
+                    <div class="payment-icon">📊</div>
+                    <h3>تقسيط البنوك</h3>
+                    <p>قسّط المبلغ على أقساط مريحة عن طريق بنكك - اتصل ببنكك لمعرفة العروض المتاحة</p>
+                    <div class="payment-badge">✅ أقساط مريحة</div>
+                </div>
+            </div>
+
+            <div class="installment-note">
+                <h4>💡 ملحوظة عن التقسيط</h4>
+                <p>التقسيط متاح عن طريق بنكك مباشرة. تواصل مع البنك لمعرفة عروض التقسيط المتاحة على الكارت بتاعك.</p>
+            </div>
+
+            <div class="steps-section">
+                <h2>📋 خطوات الاشتراك</h2>
+
+                <div class="step-item">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h4>اختار الباقة المناسبة</h4>
+                        <p>روح لصفحة الخطط واختار الباقة اللي تناسب هدفك وميزانيتك</p>
+                    </div>
+                </div>
+
+                <div class="step-item">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h4>اختار طريقة الدفع</h4>
+                        <p>اختار الطريقة اللي تناسبك من الطرق المتاحة وأكمل عملية الدفع</p>
+                    </div>
+                </div>
+
+                <div class="step-item">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h4>تأكيد الدفع</h4>
+                        <p>بعد الدفع هيوصلك تأكيد على الإيميل أو واتساب</p>
+                    </div>
+                </div>
+
+                <div class="step-item">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h4>استلم البرنامج</h4>
+                        <p>خلال 24-72 ساعة هتستلم خطتك الكاملة على الأبلكيشن</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cta-section">
+                <a href="index.html#pricing" class="cta-btn">اختار باقتك الآن 🚀</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <a href="index.html" class="logo">
+                        <img src="https://i.postimg.cc/6qqJH3yq/cmise2fh3007d01kqbxjx7thg-Gemini-Generated-Imagem9sp9rm9sp9rm9sp-Edited-removebg-preview-2-LI5k-TU.png" alt="NoorEldean Logo" class="logo-img">
+                        
+                    </a>
+                    <p>منصة التدريب الأونلاين الأولى للشباب العربي</p>
+                    <div class="social-links">
+                        <a href="https://www.tiktok.com/@coach_nooreldean" target="_blank" class="social-link" title="TikTok"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/></svg></a>
+                        <a href="https://www.instagram.com/coach_nooreldean/" target="_blank" class="social-link" title="Instagram"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
+                        <a href="https://www.youtube.com/@coachNooreldean" target="_blank" class="social-link" title="YouTube"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+                        <a href="https://wa.me/201515835183" target="_blank" class="social-link" title="WhatsApp"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4>روابط سريعة</h4>
+                    <ul>
+                        <li><a href="index.html">الرئيسية</a></li>
+                        <li><a href="index.html#services">الخدمات</a></li>
+                        <li><a href="index.html#pricing">الخطط</a></li>
+                        <li><a href="index.html#faq">الأسئلة المتكررة</a></li>
+                        <li><a href="nooreldean-ai.html">الـ AI</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h4>تواصل معنا</h4>
+                    <p><a href="mailto:nooreldeancoaching@gmail.com">📧 nooreldeancoaching@gmail.com</a></p>
+                    <p><a href="tel:+201515835183">📱 01515835183</a></p>
+                    <p>📍 مصر</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© <span id="currentYear">2026</span> NoorEldean Coaching. جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+
+        <!-- WhatsApp Floating Button -->
+        <a href="https://wa.me/201515835183" target="_blank" class="whatsapp-float" aria-label="تواصل واتساب">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        </a>
+
+        <!-- Scroll to Top Button -->
+        <button class="scroll-top" aria-label="العودة للأعلى">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 15l-6-6-6 6"/></svg>
+        </button>
+    </footer>
+
+    <script src="script.js"></script>
+    
+    <!-- AOS Library -->
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 800,
+            easing: 'ease-out-cubic',
+            once: true,
+            offset: 50
+        });
+    </script>
+</body>
+
+</html>

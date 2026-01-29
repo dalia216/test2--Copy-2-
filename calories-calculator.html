@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>حاسبة السعرات | NoorEldean Coaching</title>
+    <meta name="description" content="احسب احتياجك اليومي من السعرات الحرارية بناءً على وزنك وطولك ومستوى نشاطك">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="https://i.postimg.cc/6qqJH3yq/cmise2fh3007d01kqbxjx7thg-Gemini-Generated-Imagem9sp9rm9sp9rm9sp-Edited-removebg-preview-2-LI5k-TU.png">
+    <link rel="apple-touch-icon" href="https://i.postimg.cc/6qqJH3yq/cmise2fh3007d01kqbxjx7thg-Gemini-Generated-Imagem9sp9rm9sp9rm9sp-Edited-removebg-preview-2-LI5k-TU.png">
+    <meta name="theme-color" content="#2563eb">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap"
+        rel="stylesheet">
+    
+    <!-- AOS - Animate On Scroll Library -->
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <input type="checkbox" id="menuToggle">
+    
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container navbar-content">
+            <a href="index.html" class="logo">
+                <img src="https://i.postimg.cc/6qqJH3yq/cmise2fh3007d01kqbxjx7thg-Gemini-Generated-Imagem9sp9rm9sp9rm9sp-Edited-removebg-preview-2-LI5k-TU.png" alt="NoorEldean Logo" class="logo-img" width="70" height="70">
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html" onclick="document.getElementById('menuToggle').checked=false">🏠 الرئيسية</a></li>
+                <li><a href="about.html">👤 مين نور الدين</a></li>
+                <li><a href="index.html#pricing" onclick="document.getElementById('menuToggle').checked=false">💰 الخطط</a></li>
+                <li class="nav-dropdown">
+                    <a href="javascript:void(0)" class="active">⚡ الخدمات <span class="dropdown-arrow">▼</span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="calories-calculator.html" class="active">🔥 حاسبة السعرات</a></li>
+                        <li><a href="meal-calculator.html">🍽️ حساب سعرات يومك</a></li>
+                        <li><a href="alternatives-calculator.html">🔄 حاسبة البدائل</a></li>
+                        <li><a href="1rm-calculator.html">💪 حاسبة القوة (1RM)</a></li>
+                        <li><a href="nooreldean-ai.html">🤖 NoorEldean AI</a></li>
+                    </ul>
+                </li>
+                <li><a href="ebooks.html">📚 E-Books</a></li>
+                <li><a href="payment.html">💳 طرق الدفع</a></li>
+                <li><a href="contact.html">📞 اتصل بنا</a></li>
+            </ul>
+            <label for="menuToggle" class="menu-icon" aria-label="فتح القائمة">
+                <span></span>
+                <span></span>
+                <span></span>
+            </label>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>حاسبة السعرات الحرارية 🔥</h1>
+            <p>اعرف جسمك محتاج كام سعرة يومياً عشان توصل لهدفك</p>
+        </div>
+    </section>
+
+    <!-- Calculator Section -->
+    <section class="calculator-section">
+        <div id="noor-advanced-calc">
+            <div class="nc-header">
+                <h2 class="nc-title">صمم جسمك بالأرقام 🎯</h2>
+            </div>
+
+            <div class="nc-group">
+                <label class="nc-label">البريد الإلكتروني (لعرض النتيجة) <span class="required-star">*</span></label>
+                <input type="email" id="nc-email" class="nc-input" placeholder="example@gmail.com">
+            </div>
+
+            <div class="nc-row nc-group">
+                <div class="nc-col">
+                    <label class="nc-label">الوزن (كجم)</label>
+                    <input type="number" id="nc-weight" class="nc-input" placeholder="75">
+                </div>
+                <div class="nc-col">
+                    <label class="nc-label">العمر</label>
+                    <input type="number" id="nc-age" class="nc-input" placeholder="25">
+                </div>
+            </div>
+
+            <div class="nc-row nc-group">
+                <div class="nc-col">
+                    <label class="nc-label">الطول (سم)</label>
+                    <input type="number" id="nc-height" class="nc-input" placeholder="175">
+                </div>
+                <div class="nc-col">
+                    <label class="nc-label">النوع</label>
+                    <select id="nc-gender" class="nc-select">
+                        <option value="male">ذكر</option>
+                        <option value="female">أنثى</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="nc-group">
+                <label class="nc-label">مستوى النشاط 🔥</label>
+                <select id="nc-activity" class="nc-select">
+                    <option value="1.2">خامل (بدون تمرين)</option>
+                    <option value="1.375">خفيف (1-3 أيام)</option>
+                    <option value="1.55" selected>متوسط (3-5 أيام)</option>
+                    <option value="1.725">نشيط (6-7 أيام)</option>
+                    <option value="1.9">نشيط جداً (مرتين يومياً)</option>
+                </select>
+            </div>
+
+            <hr style="border:0; border-top:1px solid #e2e8f0; margin: 20px 0;">
+
+            <label class="nc-label" style="text-align:center; margin-bottom:10px;">اختار طريقة حساب الهدف 👇</label>
+            <div class="toggle-container">
+                <div class="toggle-option active" onclick="setMode('standard', this)">⚡ نظام تلقائي</div>
+                <div class="toggle-option" onclick="setMode('custom', this)">🛠️ هدف مخصص</div>
+            </div>
+
+            <div id="section-standard" class="calc-section active">
+                <div class="nc-group">
+                    <label class="nc-label">عايز تعمل إيه؟</label>
+                    <select id="nc-goal-std" class="nc-select">
+                        <option value="-500">📉 إنقاص وزن (صحي)</option>
+                        <option value="-1000">🚀 إنقاص وزن (سريع)</option>
+                        <option value="0">⚖️ ثبات وزن</option>
+                        <option value="500">💪 زيادة عضل (Clean Bulk)</option>
+                        <option value="1000">🍔 زيادة ضخمة (Dirty Bulk)</option>
+                    </select>
+                </div>
+            </div>
+
+            <div id="section-custom" class="calc-section">
+                <div class="custom-box">
+                    <div class="radio-group">
+                        <label class="radio-item"><input type="radio" name="c_type" value="lose" checked> خسارة
+                            وزن</label>
+                        <label class="radio-item"><input type="radio" name="c_type" value="gain"> زيادة وزن</label>
+                    </div>
+                    <div class="nc-row">
+                        <div class="nc-col">
+                            <input type="number" id="c-kg" class="nc-input" placeholder="الكمية (كجم)">
+                        </div>
+                        <div class="nc-col">
+                            <input type="number" id="c-weeks" class="nc-input" placeholder="المدة (أسابيع)">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <button id="calc-btn" onclick="calculatePlan()">احسب خطتي 🚀</button>
+
+            <div id="result-area">
+                <div id="res-msg" style="text-align:center; font-weight:700; color:#1e40af; margin-bottom:10px;"></div>
+
+                <div id="main-card" class="res-card">
+                    <div style="font-size:14px; margin-bottom:5px; font-weight:700; color:#14532d">السعرات اليومية
+                        المطلوبة</div>
+                    <span class="main-num" id="res-target">0</span> <span
+                        style="font-weight:700; color:#16a34a">Cal</span>
+                    <div id="warning-txt">⚠️ تنبيه: السعرات قليلة جداً! زود المدة عشان صحتك.</div>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <span class="stat-lbl">معدل الحرق (BMR)</span>
+                        <span class="stat-val" id="res-bmr">0</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-lbl">الاحتياج الكلي (TDEE)</span>
+                        <span class="stat-val" id="res-tdee">0</span>
+                    </div>
+                </div>
+                <div id="email-msg">⏳ جاري إرسال نسخة للإيميل...</div>
+
+                <div class="share-btns" style="display:flex; gap:10px; margin-top:15px;">
+                    <button onclick="copyCalResult()"
+                        style="flex:1; padding:12px; border:none; border-radius:10px; background:#f1f5f9; color:#475569; font-weight:700; cursor:pointer; font-family:'Tajawal'; display:flex; align-items:center; justify-content:center; gap:5px;">📋
+                        نسخ</button>
+                    <button onclick="sendCalWhatsapp()"
+                        style="flex:1; padding:12px; border:none; border-radius:10px; background:#22c55e; color:white; font-weight:700; cursor:pointer; font-family:'Tajawal'; display:flex; align-items:center; justify-content:center; gap:5px;">💬
+                        واتساب</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <a href="index.html" class="logo">
+                        <img src="https://i.postimg.cc/6qqJH3yq/cmise2fh3007d01kqbxjx7thg-Gemini-Generated-Imagem9sp9rm9sp9rm9sp-Edited-removebg-preview-2-LI5k-TU.png" alt="NoorEldean Logo" class="logo-img">
+                        
+                    </a>
+                    <p>منصة التدريب الأونلاين الأولى للشباب العربي</p>
+                    <div class="social-links">
+                        <a href="https://www.tiktok.com/@coach_nooreldean" target="_blank" class="social-link" title="TikTok"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/></svg></a>
+                        <a href="https://www.instagram.com/coach_nooreldean/" target="_blank" class="social-link" title="Instagram"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
+                        <a href="https://www.youtube.com/@coachNooreldean" target="_blank" class="social-link" title="YouTube"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+                        <a href="https://wa.me/201515835183" target="_blank" class="social-link" title="WhatsApp"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4>روابط سريعة</h4>
+                    <ul>
+                        <li><a href="index.html">الرئيسية</a></li>
+                        <li><a href="index.html#services">الخدمات</a></li>
+                        <li><a href="index.html#pricing">الخطط</a></li>
+                        <li><a href="index.html#faq">الأسئلة المتكررة</a></li>
+                        <li><a href="index.html#testimonials">قصص النجاح</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h4>تواصل معنا</h4>
+                    <p><a href="mailto:nooreldeancoaching@gmail.com">📧 nooreldeancoaching@gmail.com</a></p>
+                    <p><a href="tel:+201515835183">📱 01515835183</a></p>
+                    <p>📍 مصر</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© <span id="currentYear">2026</span> NoorEldean Coaching. جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+
+        <!-- WhatsApp Floating Button -->
+        <a href="https://wa.me/201515835183" target="_blank" class="whatsapp-float" aria-label="تواصل واتساب">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        </a>
+
+        <!-- Scroll to Top Button -->
+        <button class="scroll-top" aria-label="العودة للأعلى">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 15l-6-6-6 6"/></svg>
+        </button>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        (function () {
+            // رابط Google Apps Script
+            const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyUFA9OHy6Gg2uKvMTppcrLqgydEK4eyRHNBL-SwrtsVVmkJ908V8IaVMr1UlW8jiBcNw/exec';
+            let currentMode = 'standard';
+
+            window.setMode = function (mode, el) {
+                currentMode = mode;
+                document.querySelectorAll('.toggle-option').forEach(d => d.classList.remove('active'));
+                el.classList.add('active');
+                document.querySelectorAll('.calc-section').forEach(s => s.classList.remove('active'));
+                document.getElementById('section-' + mode).classList.add('active');
+            }
+
+            window.calculatePlan = function () {
+                document.querySelectorAll('.nc-input').forEach(i => i.classList.remove('error'));
+                document.getElementById('main-card').classList.remove('warning');
+                document.getElementById('warning-txt').style.display = 'none';
+
+                var email = document.getElementById('nc-email').value.trim();
+                var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+                if (!email || !emailRegex.test(email)) {
+                    alert('⛔ عشان تشوف النتيجة وتستلم خطتك، لازم تكتب إيميل شغال!');
+                    highlight('nc-email');
+                    return;
+                }
+
+                var w = parseFloat(document.getElementById('nc-weight').value);
+                var h = parseFloat(document.getElementById('nc-height').value);
+                var a = parseFloat(document.getElementById('nc-age').value);
+                var g = document.getElementById('nc-gender').value;
+                var act = parseFloat(document.getElementById('nc-activity').value);
+
+                if (isNaN(w) || w < 30 || w > 300) { highlight('nc-weight'); return; }
+                if (isNaN(h) || h < 100 || h > 250) { highlight('nc-height'); return; }
+                if (isNaN(a) || a < 10 || a > 100) { highlight('nc-age'); return; }
+
+                var bmr = (g === 'male') ? (10 * w + 6.25 * h - 5 * a + 5) : (10 * w + 6.25 * h - 5 * a - 161);
+                var tdee = Math.round(bmr * act);
+                var target = 0;
+                var goalTxt = "";
+
+                if (currentMode === 'standard') {
+                    var val = parseFloat(document.getElementById('nc-goal-std').value);
+                    target = Math.round(tdee + val);
+                    if (val === 0) goalTxt = "ثبات الوزن";
+                    else if (val === 500) goalTxt = "زيادة عضل (Clean Bulk)";
+                    else if (val === 1000) goalTxt = "زيادة ضخمة (Dirty Bulk)";
+                    else goalTxt = "إنقاص الوزن";
+                } else {
+                    var kg = parseFloat(document.getElementById('c-kg').value);
+                    var wks = parseFloat(document.getElementById('c-weeks').value);
+                    var type = document.querySelector('input[name="c_type"]:checked').value;
+
+                    if (isNaN(kg) || kg <= 0) { highlight('c-kg'); return; }
+                    if (isNaN(wks) || wks <= 0) { highlight('c-weeks'); return; }
+
+                    var totalDeficit = kg * 7700;
+                    var daily = Math.round(totalDeficit / (wks * 7));
+
+                    if (type === 'lose') {
+                        target = tdee - daily;
+                        goalTxt = `خسارة ${kg} كجم في ${wks} أسبوع`;
+                    } else {
+                        target = tdee + daily;
+                        goalTxt = `زيادة ${kg} كجم في ${wks} أسبوع`;
+                    }
+                }
+
+                if (target < bmr && (currentMode === 'custom' || (currentMode === 'standard' && parseFloat(document.getElementById('nc-goal-std').value) < -500))) {
+                    document.getElementById('main-card').classList.add('warning');
+                    document.getElementById('warning-txt').style.display = 'block';
+                }
+
+                document.getElementById('res-msg').innerText = `بناءً على هدفك: ${goalTxt}`;
+                document.getElementById('res-target').innerText = Math.round(target);
+                document.getElementById('res-bmr').innerText = Math.round(bmr);
+                document.getElementById('res-tdee').innerText = Math.round(tdee);
+
+                var area = document.getElementById('result-area');
+                area.style.display = 'block';
+                area.scrollIntoView({ behavior: 'smooth' });
+
+                // إرسال البيانات لجوجل شيت والإيميل
+                var eStatus = document.getElementById('email-msg');
+                eStatus.style.display = 'block';
+                eStatus.innerText = "⏳ جاري حفظ البيانات وإرسال الخطة...";
+
+                fetch(GOOGLE_SCRIPT_URL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    cache: 'no-cache',
+                    body: JSON.stringify({
+                        user_email: email,
+                        target_calories: Math.round(target),
+                        bmr_value: Math.round(bmr),
+                        tdee_value: Math.round(tdee),
+                        goal_name: goalTxt
+                    })
+                }).then(() => {
+                    eStatus.innerText = "✅ تم حفظ البيانات وإرسال الخطة بنجاح!";
+                    eStatus.style.color = "#16a34a";
+                }).catch(() => {
+                    eStatus.innerText = "⚠️ حدث خطأ في الاتصال بالسيرفر.";
+                    eStatus.style.color = "#dc2626";
+                });
+            }
+
+            function highlight(id) { document.getElementById(id).classList.add('error'); }
+
+            // Store last result for sharing
+            var lastCalResult = {};
+            window.storeResult = function (target, bmr, tdee, goal) {
+                lastCalResult = { target: target, bmr: bmr, tdee: tdee, goal: goal };
+            };
+
+            window.copyCalResult = function () {
+                var target = document.getElementById('res-target').innerText;
+                var bmr = document.getElementById('res-bmr').innerText;
+                var tdee = document.getElementById('res-tdee').innerText;
+                var msg = document.getElementById('res-msg').innerText;
+
+                var text = `🔥 *حاسبة السعرات - NoorEldean Coaching*\n\n`;
+                text += `📊 ${msg}\n\n`;
+                text += `🎯 السعرات المطلوبة: ${target} Cal\n`;
+                text += `⚡ معدل الحرق (BMR): ${bmr}\n`;
+                text += `📈 الاحتياج الكلي (TDEE): ${tdee}`;
+
+                navigator.clipboard.writeText(text).then(() => alert('تم النسخ! ✅'));
+            };
+
+            window.sendCalWhatsapp = function () {
+                var target = document.getElementById('res-target').innerText;
+                var bmr = document.getElementById('res-bmr').innerText;
+                var tdee = document.getElementById('res-tdee').innerText;
+                var msg = document.getElementById('res-msg').innerText;
+
+                var text = `🔥 *حاسبة السعرات - NoorEldean Coaching*\n\n`;
+                text += `📊 ${msg}\n\n`;
+                text += `🎯 السعرات المطلوبة: ${target} Cal\n`;
+                text += `⚡ معدل الحرق (BMR): ${bmr}\n`;
+                text += `📈 الاحتياج الكلي (TDEE): ${tdee}`;
+
+                window.open(`https://wa.me/?text=${encodeURIComponent(text)}`, '_blank');
+            };
+        })();
+    </script>
+    
+    <!-- AOS Library -->
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 800,
+            easing: 'ease-out-cubic',
+            once: true,
+            offset: 50
+        });
+    </script>
+</body>
+
+</html>

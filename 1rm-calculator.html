@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>حاسبة القوة (1RM) | NoorEldean Coaching</title>
+    <meta name="description" content="اعرف أقصى وزن تقدر تشيله عدة واحدة عشان تظبط أوزان تمرينك بدقة">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="https://i.postimg.cc/6qqJH3yq/cmise2fh3007d01kqbxjx7thg-Gemini-Generated-Imagem9sp9rm9sp9rm9sp-Edited-removebg-preview-2-LI5k-TU.png">
+    <link rel="apple-touch-icon" href="https://i.postimg.cc/6qqJH3yq/cmise2fh3007d01kqbxjx7thg-Gemini-Generated-Imagem9sp9rm9sp9rm9sp-Edited-removebg-preview-2-LI5k-TU.png">
+    <meta name="theme-color" content="#2563eb">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- AOS - Animate On Scroll Library -->
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .rm-calc {
+            --main-color: #1a2a4e;
+            --accent-color: #d4af37;
+            background: #fff;
+            max-width: 600px;
+            margin: 0 auto;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            border: 1px solid #eee;
+        }
+
+        .rm-header {
+            background: var(--main-color);
+            color: #fff;
+            padding: 25px;
+            text-align: center;
+        }
+
+        .rm-header h2 {
+            margin: 0;
+            font-size: 1.6rem;
+        }
+
+        .rm-header p {
+            margin-top: 5px;
+            opacity: 0.8;
+            font-size: 0.9rem;
+        }
+
+        .rm-body {
+            padding: 30px;
+        }
+
+        .rm-input-group {
+            margin-bottom: 20px;
+        }
+
+        .rm-input-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #1a2a4e;
+        }
+
+        .rm-input-group input {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            text-align: center;
+            font-family: 'Cairo', sans-serif;
+            transition: 0.3s;
+        }
+
+        .rm-input-group input:focus {
+            border-color: var(--main-color);
+            outline: none;
+        }
+
+        .rm-btn {
+            width: 100%;
+            padding: 15px;
+            background: var(--main-color);
+            color: var(--accent-color);
+            border: 1px solid var(--accent-color);
+            border-radius: 10px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+            font-family: 'Cairo', sans-serif;
+        }
+
+        .rm-btn:hover {
+            background: #111;
+        }
+
+        .rm-result-box {
+            margin-top: 30px;
+            text-align: center;
+            display: none;
+            animation: rmFadeIn 0.5s ease;
+        }
+
+        @keyframes rmFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .rm-main-result {
+            background: #fdfdfd;
+            border: 2px dashed var(--accent-color);
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 25px;
+        }
+
+        .rm-value {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--main-color);
+        }
+
+        .rm-label {
+            font-size: 1rem;
+            color: #666;
+        }
+
+        .rm-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+            font-size: 0.95rem;
+        }
+
+        .rm-table th {
+            background: var(--main-color);
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .rm-table td {
+            padding: 10px;
+            border-bottom: 1px solid #eee;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .rm-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .rm-email-msg {
+            text-align: center;
+            font-size: 12px;
+            color: #64748b;
+            margin-top: 10px;
+            display: none;
+        }
+
+        .rm-share-btns {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .rm-share-btn {
+            flex: 1;
+            padding: 12px;
+            border: none;
+            border-radius: 10px;
+            font-weight: 700;
+            cursor: pointer;
+            font-family: 'Cairo', sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+        }
+
+        .rm-copy {
+            background: #f1f5f9;
+            color: #475569;
+        }
+
+        .rm-whats {
+            background: #22c55e;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="checkbox" id="menuToggle">
+    
+    <nav class="navbar">
+        <div class="container navbar-content">
+            <a href="index.html" class="logo">
+                <img src="https://i.postimg.cc/6qqJH3yq/cmise2fh3007d01kqbxjx7thg-Gemini-Generated-Imagem9sp9rm9sp9rm9sp-Edited-removebg-preview-2-LI5k-TU.png" alt="NoorEldean Logo" class="logo-img" width="70" height="70">
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html" onclick="document.getElementById('menuToggle').checked=false">🏠 الرئيسية</a></li>
+                <li><a href="about.html">👤 مين نور الدين</a></li>
+                <li><a href="index.html#pricing" onclick="document.getElementById('menuToggle').checked=false">💰 الخطط</a></li>
+                <li class="nav-dropdown">
+                    <a href="javascript:void(0)" class="active">⚡ الخدمات <span class="dropdown-arrow">▼</span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="calories-calculator.html">🔥 حاسبة السعرات</a></li>
+                        <li><a href="meal-calculator.html">🍽️ حساب سعرات يومك</a></li>
+                        <li><a href="alternatives-calculator.html">🔄 حاسبة البدائل</a></li>
+                        <li><a href="1rm-calculator.html" class="active">💪 حاسبة القوة (1RM)</a></li>
+                        <li><a href="nooreldean-ai.html">🤖 NoorEldean AI</a></li>
+                    </ul>
+                </li>
+                <li><a href="ebooks.html">📚 E-Books</a></li>
+                <li><a href="payment.html">💳 طرق الدفع</a></li>
+                <li><a href="contact.html">📞 اتصل بنا</a></li>
+            </ul>
+            <label for="menuToggle" class="menu-icon" aria-label="فتح القائمة">
+                <span></span>
+                <span></span>
+                <span></span>
+            </label>
+        </div>
+    </nav>
+
+    <section class="page-header">
+        <div class="container">
+            <h1>حاسبة القوة (1RM) 💪</h1>
+            <p>اعرف أقصى وزن تقدر تشيله عدة واحدة عشان تظبط أوزان تمرينك بدقة</p>
+        </div>
+    </section>
+
+    <section class="calculator-section">
+        <div class="rm-calc">
+            <div class="rm-header">
+                <h2>حاسبة الـ 1 Rep Max 🏋️</h2>
+                <p>احسب أقصى وزن تقدر ترفعه مرة واحدة</p>
+            </div>
+
+            <div class="rm-body">
+                <div class="rm-input-group">
+                    <label>📧 الإيميل (لاستلام جدول الأوزان):</label>
+                    <input type="email" id="rm-email" placeholder="example@email.com">
+                </div>
+
+                <div class="rm-input-group">
+                    <label>⚖️ الوزن اللي رفعته (كجم):</label>
+                    <input type="number" id="rm-weight" placeholder="مثال: 50">
+                </div>
+
+                <div class="rm-input-group">
+                    <label>🔁 عدد التكرارات (العدات):</label>
+                    <input type="number" id="rm-reps" placeholder="مثال: 10">
+                </div>
+
+                <button class="rm-btn" onclick="calculate1RM()">احسب النتيجة 🚀</button>
+
+                <div class="rm-result-box" id="rm-resultArea">
+                    <div class="rm-main-result">
+                        <div class="rm-label">الـ 1 Rep Max المتوقع هو:</div>
+                        <div class="rm-value"><span id="rm-oneRmResult">0</span> كجم</div>
+                    </div>
+
+                    <h3 style="text-align:center; margin-bottom:15px; font-size:1.1rem;">جدول الأوزان المقترحة للتمرين:
+                    </h3>
+
+                    <table class="rm-table">
+                        <thead>
+                            <tr>
+                                <th>النسبة %</th>
+                                <th>التكرارات</th>
+                                <th>الوزن (كجم)</th>
+                            </tr>
+                        </thead>
+                        <tbody id="rm-tableBody"></tbody>
+                    </table>
+
+                    <div class="rm-email-msg" id="rm-email-msg">⏳ جاري حفظ البيانات...</div>
+
+                    <div class="rm-share-btns">
+                        <button class="rm-share-btn rm-copy" onclick="copy1RMResult()">📋 نسخ</button>
+                        <button class="rm-share-btn rm-whats" onclick="send1RMWhatsapp()">💬 واتساب</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <a href="index.html" class="logo">
+                        <img src="https://i.postimg.cc/6qqJH3yq/cmise2fh3007d01kqbxjx7thg-Gemini-Generated-Imagem9sp9rm9sp9rm9sp-Edited-removebg-preview-2-LI5k-TU.png" alt="NoorEldean Logo" class="logo-img">
+                        
+                    </a>
+                    <p>منصة التدريب الأونلاين الأولى للشباب العربي</p>
+                </div>
+                <div class="footer-links">
+                    <h4>روابط سريعة</h4>
+                    <ul>
+                        <li><a href="index.html">الرئيسية</a></li>
+                        <li><a href="index.html#services">الخدمات</a></li>
+                        <li><a href="index.html#pricing">الخطط</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h4>تواصل معنا</h4>
+                    <p><a href="mailto:nooreldeancoaching@gmail.com">📧 nooreldeancoaching@gmail.com</a></p>
+                    <p><a href="tel:+201515835183">📱 01515835183</a></p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© <span id="currentYear">2026</span> NoorEldean Coaching. جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+
+        <!-- WhatsApp Floating Button -->
+        <a href="https://wa.me/201515835183" target="_blank" class="whatsapp-float" aria-label="تواصل واتساب">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        </a>
+
+        <!-- Scroll to Top Button -->
+        <button class="scroll-top" aria-label="العودة للأعلى">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 15l-6-6-6 6"/></svg>
+        </button>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Google Apps Script URL - غير الرابط ده للرابط بتاعك
+        const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyUFA9OHy6Gg2uKvMTppcrLqgydEK4eyRHNBL-SwrtsVVmkJ908V8IaVMr1UlW8jiBcNw/exec";
+
+        var lastRMResult = {};
+
+        function calculate1RM() {
+            let email = document.getElementById('rm-email').value.trim();
+            let weight = parseFloat(document.getElementById('rm-weight').value);
+            let reps = parseFloat(document.getElementById('rm-reps').value);
+
+            if (!email || !email.includes('@')) {
+                alert("من فضلك ادخل إيميل صحيح 📧");
+                return;
+            }
+            if (!weight || !reps || weight <= 0 || reps <= 0) {
+                alert("من فضلك ادخل أرقام صحيحة للوزن والتكرارات");
+                return;
+            }
+
+            // معادلة Epley لحساب الـ 1RM
+            let oneRM = Math.round(weight * (1 + (reps / 30)));
+
+            document.getElementById('rm-oneRmResult').innerText = oneRM;
+            document.getElementById('rm-resultArea').style.display = 'block';
+
+            // بناء الجدول
+            const percentageData = [
+                { pct: 100, reps: "1", factor: 1.00 },
+                { pct: 95, reps: "2", factor: 0.95 },
+                { pct: 93, reps: "3", factor: 0.93 },
+                { pct: 90, reps: "4", factor: 0.90 },
+                { pct: 87, reps: "5", factor: 0.87 },
+                { pct: 85, reps: "6", factor: 0.85 },
+                { pct: 83, reps: "7", factor: 0.83 },
+                { pct: 80, reps: "8", factor: 0.80 },
+                { pct: 77, reps: "9", factor: 0.77 },
+                { pct: 75, reps: "10", factor: 0.75 },
+                { pct: 70, reps: "11", factor: 0.70 },
+                { pct: 67, reps: "12", factor: 0.67 },
+                { pct: 65, reps: "15", factor: 0.65 }
+            ];
+
+            let tableContent = "";
+            percentageData.forEach(row => {
+                let calcWeight = Math.round(oneRM * row.factor);
+                tableContent += `<tr><td>%${row.pct}</td><td>${row.reps}</td><td>${calcWeight} كجم</td></tr>`;
+            });
+            document.getElementById('rm-tableBody').innerHTML = tableContent;
+
+            // حفظ النتيجة للمشاركة
+            lastRMResult = { email: email, weight: weight, reps: reps, oneRM: oneRM };
+
+            // إرسال لجوجل شيت
+            var eStatus = document.getElementById('rm-email-msg');
+            eStatus.style.display = 'block';
+            eStatus.innerText = "⏳ جاري حفظ البيانات...";
+
+            fetch(GOOGLE_SCRIPT_URL, {
+                method: 'POST',
+                mode: 'no-cors',
+                cache: 'no-cache',
+                body: JSON.stringify({
+                    user_email: email,
+                    weight_lifted: weight,
+                    reps_done: reps,
+                    one_rm_result: oneRM,
+                    calculator_type: "1RM Calculator"
+                })
+            }).then(() => {
+                eStatus.innerText = "✅ تم حفظ البيانات بنجاح!";
+                eStatus.style.color = "#16a34a";
+            }).catch(() => {
+                eStatus.innerText = "⚠️ حدث خطأ في الاتصال.";
+                eStatus.style.color = "#dc2626";
+            });
+
+            document.getElementById('rm-resultArea').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function copy1RMResult() {
+            if (!lastRMResult.oneRM) return;
+
+            let text = `💪 *حاسبة 1RM - NoorEldean Coaching*\n\n`;
+            text += `⚖️ الوزن المرفوع: ${lastRMResult.weight} كجم\n`;
+            text += `🔁 عدد التكرارات: ${lastRMResult.reps}\n`;
+            text += `🎯 الـ 1 Rep Max: ${lastRMResult.oneRM} كجم\n\n`;
+            text += `📊 جدول الأوزان:\n`;
+            text += `• 85% = ${Math.round(lastRMResult.oneRM * 0.85)} كجم (6 عدات)\n`;
+            text += `• 75% = ${Math.round(lastRMResult.oneRM * 0.75)} كجم (10 عدات)\n`;
+            text += `• 65% = ${Math.round(lastRMResult.oneRM * 0.65)} كجم (15 عدات)`;
+
+            navigator.clipboard.writeText(text).then(() => alert('تم النسخ! ✅'));
+        }
+
+        function send1RMWhatsapp() {
+            if (!lastRMResult.oneRM) return;
+
+            let text = `💪 *حاسبة 1RM - NoorEldean Coaching*\n\n`;
+            text += `⚖️ الوزن المرفوع: ${lastRMResult.weight} كجم\n`;
+            text += `🔁 عدد التكرارات: ${lastRMResult.reps}\n`;
+            text += `🎯 الـ 1 Rep Max: ${lastRMResult.oneRM} كجم\n\n`;
+            text += `📊 جدول الأوزان:\n`;
+            text += `• 85% = ${Math.round(lastRMResult.oneRM * 0.85)} كجم (6 عدات)\n`;
+            text += `• 75% = ${Math.round(lastRMResult.oneRM * 0.75)} كجم (10 عدات)\n`;
+            text += `• 65% = ${Math.round(lastRMResult.oneRM * 0.65)} كجم (15 عدات)`;
+
+            window.open(`https://wa.me/?text=${encodeURIComponent(text)}`, '_blank');
+        }
+    </script>
+    
+    <!-- AOS Library -->
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 800,
+            easing: 'ease-out-cubic',
+            once: true,
+            offset: 50
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NoorElDean AI | مساعدك الذكي</title>
+    <meta name="description"
+        content="مساعدك الذكي للتغذية والتمارين والعادات الصحية. اسأل أي سؤال واحصل على إجابة فورية.">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="https://i.postimg.cc/6qqJH3yq/cmise2fh3007d01kqbxjx7thg-Gemini-Generated-Imagem9sp9rm9sp9rm9sp-Edited-removebg-preview-2-LI5k-TU.png">
+    <link rel="apple-touch-icon" href="https://i.postimg.cc/6qqJH3yq/cmise2fh3007d01kqbxjx7thg-Gemini-Generated-Imagem9sp9rm9sp9rm9sp-Edited-removebg-preview-2-LI5k-TU.png">
+    <meta name="theme-color" content="#2563eb">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- AOS - Animate On Scroll Library -->
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* ===== AI Chat Specific Styles ===== */
+        .ai-page-wrapper {
+            min-height: 100vh;
+            padding-top: 85px;
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0e7ff 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Decorative animated background */
+        .ai-page-wrapper::before {
+            content: '';
+            position: absolute;
+            top: -200px;
+            right: -200px;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(37, 99, 235, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: float 8s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        .ai-page-wrapper::after {
+            content: '';
+            position: absolute;
+            bottom: -150px;
+            left: -150px;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(124, 58, 237, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: float 10s ease-in-out infinite reverse;
+            pointer-events: none;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-30px) scale(1.05); }
+        }
+
+        .ai-container {
+            max-width: 950px;
+            margin: 0 auto;
+            padding: 35px 20px 100px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Header Card */
+        .ai-header-card {
+            background: linear-gradient(135deg, #2563eb 0%, #1e40af 50%, #7c3aed 100%);
+            border-radius: 24px;
+            padding: 35px;
+            text-align: center;
+            margin-bottom: 28px;
+            box-shadow: 0 15px 50px rgba(37, 99, 235, 0.35);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .ai-header-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent 40%, rgba(255,255,255,0.1) 50%, transparent 60%);
+            animation: shimmer 3s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%) translateY(-100%); }
+            100% { transform: translateX(100%) translateY(100%); }
+        }
+
+        .ai-header-card .ai-icon {
+            width: 90px;
+            height: 90px;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 18px;
+            font-size: 45px;
+            position: relative;
+            z-index: 1;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            animation: pulse-icon 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse-icon {
+            0%, 100% { transform: scale(1); box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15); }
+            50% { transform: scale(1.05); box-shadow: 0 12px 35px rgba(0, 0, 0, 0.2); }
+        }
+
+        .ai-header-card h1 {
+            color: white;
+            font-size: 32px;
+            font-weight: 900;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .ai-header-card p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 17px;
+            font-weight: 600;
+            position: relative;
+            z-index: 1;
+        }
+
+        .ai-status {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            padding: 10px 24px;
+            border-radius: 50px;
+            margin-top: 18px;
+            color: #4ade80;
+            font-weight: 700;
+            font-size: 15px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .ai-status .dot {
+            width: 12px;
+            height: 12px;
+            background: #4ade80;
+            border-radius: 50%;
+            box-shadow: 0 0 15px #4ade80;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: 0.7;
+                transform: scale(0.85);
+            }
+        }
+
+        /* Chat Card */
+        .chat-card {
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            border: 1px solid rgba(37, 99, 235, 0.1);
+        }
+
+        .chat-header {
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            padding: 18px 28px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .chat-header h3 {
+            font-size: 17px;
+            font-weight: 700;
+            color: #1e40af;
+        }
+
+        .clear-btn {
+            padding: 10px 22px;
+            background: linear-gradient(135deg, #f0f4ff 0%, #e0e7ff 100%);
+            border: 2px solid #dbeafe;
+            border-radius: 12px;
+            color: #2563eb;
+            font-family: 'Cairo', sans-serif;
+            font-weight: 700;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .clear-btn:hover {
+            background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+            color: white;
+            border-color: #2563eb;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(37, 99, 235, 0.3);
+        }
+
+        /* Messages Container */
+        .messages-container {
+            min-height: 420px;
+            max-height: 520px;
+            overflow-y: auto;
+            padding: 28px;
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+            scroll-behavior: smooth;
+        }
+
+        /* Custom scrollbar */
+        .messages-container::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .messages-container::-webkit-scrollbar-track {
+            background: #f1f5f9;
+            border-radius: 10px;
+        }
+
+        .messages-container::-webkit-scrollbar-thumb {
+            background: linear-gradient(135deg, #2563eb, #7c3aed);
+            border-radius: 10px;
+        }
+
+        /* Welcome State */
+        .welcome-state {
+            text-align: center;
+            padding: 50px 25px;
+        }
+
+        .welcome-state .welcome-icon {
+            font-size: 70px;
+            margin-bottom: 18px;
+            display: block;
+            animation: bounce 2s ease-in-out infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .welcome-state h2 {
+            font-size: 26px;
+            font-weight: 800;
+            color: #1e40af;
+            margin-bottom: 12px;
+        }
+
+        .welcome-state p {
+            color: #64748b;
+            font-size: 16px;
+            margin-bottom: 30px;
+            line-height: 1.7;
+        }
+
+        .suggestions-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 14px;
+            max-width: 550px;
+            margin: 0 auto;
+        }
+
+        .suggestion-btn {
+            padding: 16px 20px;
+            background: linear-gradient(135deg, #f0f4ff 0%, #e0e7ff 100%);
+            border: 2px solid #c7d2fe;
+            border-radius: 16px;
+            font-size: 15px;
+            color: #1e40af;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            font-family: 'Cairo', sans-serif;
+            font-weight: 600;
+            text-align: right;
+        }
+
+        .suggestion-btn:hover {
+            background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+            color: white;
+            border-color: #2563eb;
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: 0 10px 30px rgba(37, 99, 235, 0.35);
+        }
+
+        /* Message Bubbles */
+        .message {
+            max-width: 80%;
+            animation: slideIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px) scale(0.95);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .message.user {
+            align-self: flex-start;
+        }
+
+        .message.ai {
+            align-self: flex-end;
+        }
+
+        .message-bubble {
+            padding: 18px 24px;
+            border-radius: 20px;
+            font-size: 15px;
+            line-height: 1.9;
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .message.user .message-bubble {
+            background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+            color: white;
+            border-bottom-right-radius: 6px;
+            box-shadow: 0 5px 20px rgba(37, 99, 235, 0.3);
+        }
+
+        .message.ai .message-bubble {
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            color: #1f2937;
+            border-bottom-left-radius: 6px;
+            border: 1px solid #e5e7eb;
+        }
+
+        /* Links in AI responses */
+        .message.ai .message-bubble a {
+            color: #2563eb;
+            text-decoration: underline;
+            font-weight: 600;
+            transition: all 0.2s ease;
+        }
+
+        .message.ai .message-bubble a:hover {
+            color: #7c3aed;
+        }
+
+        .message-time {
+            font-size: 12px;
+            margin-top: 8px;
+            opacity: 0.7;
+        }
+
+        .message.user .message-time {
+            color: #64748b;
+            text-align: right;
+        }
+
+        .message.ai .message-time {
+            color: #64748b;
+            text-align: left;
+        }
+
+        /* Typing Indicator */
+        .typing-indicator {
+            display: none;
+            align-self: flex-end;
+        }
+
+        .typing-indicator.active {
+            display: block;
+        }
+
+        .typing-bubble {
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            padding: 20px 28px;
+            border-radius: 20px;
+            border-bottom-left-radius: 6px;
+            border: 1px solid #e5e7eb;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .typing-dot {
+            width: 10px;
+            height: 10px;
+            background: linear-gradient(135deg, #2563eb, #7c3aed);
+            border-radius: 50%;
+            animation: typingBounce 1.4s ease-in-out infinite;
+        }
+
+        .typing-dot:nth-child(1) {
+            animation-delay: 0s;
+        }
+
+        .typing-dot:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .typing-dot:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        @keyframes typingBounce {
+
+            0%,
+            80%,
+            100% {
+                transform: scale(0.6);
+                opacity: 0.4;
+            }
+
+            40% {
+                transform: scale(1.1);
+                opacity: 1;
+            }
+        }
+
+        /* Input Area */
+        .input-area {
+            padding: 22px 28px;
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            border-top: 1px solid #e5e7eb;
+            display: flex;
+            gap: 14px;
+            align-items: flex-end;
+        }
+
+        .input-wrapper {
+            flex: 1;
+        }
+
+        .input-wrapper textarea {
+            width: 100%;
+            padding: 18px 22px;
+            border: 2px solid #e5e7eb;
+            border-radius: 18px;
+            font-size: 16px;
+            font-family: 'Cairo', sans-serif;
+            resize: none;
+            min-height: 55px;
+            max-height: 130px;
+            transition: all 0.3s ease;
+            background: white;
+            color: #1f2937;
+            line-height: 1.6;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .input-wrapper textarea:focus {
+            outline: none;
+            border-color: #2563eb;
+            box-shadow: 0 0 0 5px rgba(37, 99, 235, 0.12);
+        }
+
+        .input-wrapper textarea::placeholder {
+            color: #94a3b8;
+        }
+
+        .send-btn {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+            border: none;
+            border-radius: 18px;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 8px 25px rgba(37, 99, 235, 0.35);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .send-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .send-btn:hover::before {
+            left: 100%;
+        }
+
+        .send-btn:hover {
+            transform: translateY(-4px) scale(1.05);
+            box-shadow: 0 12px 35px rgba(37, 99, 235, 0.45);
+        }
+
+        .send-btn:disabled {
+            background: #94a3b8;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .ai-container {
+                padding: 22px 15px 100px;
+            }
+
+            .ai-header-card {
+                padding: 28px 22px;
+                border-radius: 20px;
+            }
+
+            .ai-header-card h1 {
+                font-size: 26px;
+            }
+
+            .ai-header-card .ai-icon {
+                width: 70px;
+                height: 70px;
+                font-size: 38px;
+            }
+
+            .messages-container {
+                padding: 22px 18px;
+                min-height: 360px;
+            }
+
+            .message {
+                max-width: 90%;
+            }
+
+            .suggestions-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .suggestion-btn {
+                padding: 14px 18px;
+                font-size: 14px;
+            }
+
+            .input-area {
+                padding: 18px 15px;
+            }
+
+            .send-btn {
+                width: 55px;
+                height: 55px;
+                font-size: 22px;
+            }
+
+            .input-area {
+                padding: 15px;
+            }
+
+            .send-btn {
+                width: 50px;
+                height: 50px;
+                border-radius: 14px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <input type="checkbox" id="menuToggle">
+    
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container navbar-content">
+            <a href="index.html" class="logo">
+                <img src="https://i.postimg.cc/6qqJH3yq/cmise2fh3007d01kqbxjx7thg-Gemini-Generated-Imagem9sp9rm9sp9rm9sp-Edited-removebg-preview-2-LI5k-TU.png" alt="NoorEldean Logo" class="logo-img" width="70" height="70">
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html" onclick="document.getElementById('menuToggle').checked=false">🏠 الرئيسية</a></li>
+                <li><a href="about.html">👤 مين نور الدين</a></li>
+                <li><a href="index.html#pricing" onclick="document.getElementById('menuToggle').checked=false">💰 الخطط</a></li>
+                <li class="nav-dropdown">
+                    <a href="javascript:void(0)" class="active">⚡ الخدمات <span class="dropdown-arrow">▼</span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="calories-calculator.html">🔥 حاسبة السعرات</a></li>
+                        <li><a href="meal-calculator.html">🍽️ حساب سعرات يومك</a></li>
+                        <li><a href="alternatives-calculator.html">🔄 حاسبة البدائل</a></li>
+                        <li><a href="1rm-calculator.html">💪 حاسبة القوة (1RM)</a></li>
+                        <li><a href="nooreldean-ai.html" class="active">🤖 NoorEldean AI</a></li>
+                    </ul>
+                </li>
+                <li><a href="ebooks.html">📚 E-Books</a></li>
+                <li><a href="payment.html">💳 طرق الدفع</a></li>
+                <li><a href="contact.html">📞 اتصل بنا</a></li>
+            </ul>
+            <label for="menuToggle" class="menu-icon" aria-label="فتح القائمة">
+                <span></span>
+                <span></span>
+                <span></span>
+            </label>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="ai-page-wrapper">
+        <div class="ai-container">
+            <!-- Header Card -->
+            <div class="ai-header-card">
+                <div class="ai-icon">🤖</div>
+                <h1>NoorElDean AI</h1>
+                <p>مساعدك الذكي للتغذية • التمارين • العادات الصحية</p>
+                <div class="ai-status">
+                    <span class="dot"></span>
+                    <span>متصل الآن</span>
+                </div>
+            </div>
+
+            <!-- Chat Card -->
+            <div class="chat-card">
+                <div class="chat-header">
+                    <h3>💬 المحادثة</h3>
+                    <button class="clear-btn" onclick="clearChat()">🗑️ محادثة جديدة</button>
+                </div>
+
+                <div class="messages-container" id="messagesContainer">
+                    <!-- Welcome State -->
+                    <div class="welcome-state" id="welcomeState">
+                        <div class="welcome-icon">👋</div>
+                        <h2>أهلاً يا بطل!</h2>
+                        <p>أنا الكوتش نور الدين، معاك في كل حاجة تخص التغذية والتمارين 💪</p>
+                        <div class="suggestions-grid">
+                            <button class="suggestion-btn"
+                                onclick="sendSuggestion('كيف أحسب احتياجي اليومي من السعرات؟')">🔥 حساب السعرات</button>
+                            <button class="suggestion-btn"
+                                onclick="sendSuggestion('صمم لي جدول تمارين منزلية للمبتدئين')">🏋️ جدول تمارين</button>
+                            <button class="suggestion-btn"
+                                onclick="sendSuggestion('ما هي أفضل الأطعمة الغنية بالبروتين؟')">🥗 مصادر
+                                البروتين</button>
+                            <button class="suggestion-btn" onclick="sendSuggestion('إيه الباقات المتاحة عندك؟')">💎
+                                الباقات</button>
+                        </div>
+                    </div>
+
+                    <!-- Typing Indicator -->
+                    <div class="typing-indicator" id="typingIndicator">
+                        <div class="typing-bubble">
+                            <div class="typing-dot"></div>
+                            <div class="typing-dot"></div>
+                            <div class="typing-dot"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="input-area">
+                    <div class="input-wrapper">
+                        <textarea id="messageInput" placeholder="اكتب سؤالك هنا..." rows="1"
+                            onkeydown="handleKeyDown(event)"></textarea>
+                    </div>
+                    <button class="send-btn" id="sendBtn" onclick="sendMessage()">
+                        <span>➤</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <a href="index.html" class="logo">
+                        <img src="https://i.postimg.cc/6qqJH3yq/cmise2fh3007d01kqbxjx7thg-Gemini-Generated-Imagem9sp9rm9sp9rm9sp-Edited-removebg-preview-2-LI5k-TU.png" alt="NoorEldean Logo" class="logo-img">
+                        
+                    </a>
+                    <p>منصة التدريب الأونلاين الأولى للشباب العربي</p>
+                    <div class="social-links">
+                        <a href="https://www.tiktok.com/@coach_nooreldean" target="_blank" class="social-link" title="TikTok"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/></svg></a>
+                        <a href="https://www.instagram.com/coach_nooreldean/" target="_blank" class="social-link" title="Instagram"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
+                        <a href="https://www.youtube.com/@coachNooreldean" target="_blank" class="social-link" title="YouTube"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+                        <a href="https://wa.me/201515835183" target="_blank" class="social-link" title="WhatsApp"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4>روابط سريعة</h4>
+                    <ul>
+                        <li><a href="index.html">الرئيسية</a></li>
+                        <li><a href="index.html#services">الخدمات</a></li>
+                        <li><a href="index.html#pricing">الخطط</a></li>
+                        <li><a href="index.html#faq">الأسئلة المتكررة</a></li>
+                        <li><a href="nooreldean-ai.html">الـ AI</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h4>تواصل معنا</h4>
+                    <p><a href="mailto:nooreldeancoaching@gmail.com">📧 nooreldeancoaching@gmail.com</a></p>
+                    <p><a href="tel:+201515835183">📱 01515835183</a></p>
+                    <p>📍 مصر</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© <span id="currentYear">2026</span> NoorEldean Coaching. جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+
+        <!-- WhatsApp Floating Button -->
+        <a href="https://wa.me/201515835183" target="_blank" class="whatsapp-float" aria-label="تواصل واتساب">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        </a>
+
+        <!-- Scroll to Top Button -->
+        <button class="scroll-top" aria-label="العودة للأعلى">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 15l-6-6-6 6"/></svg>
+        </button>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // ==================== Configuration ====================
+        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyILLzGm-_UQegaPRylE5fFt6TAz4KwxubuX1_oTuoUsmCJ-bP4tXHMGZ_UnIbQaM1oEw/exec';
+
+        // ==================== State ====================
+        let chatHistory = [];
+        let isLoading = false;
+
+        // ==================== DOM Elements ====================
+        const messagesContainer = document.getElementById('messagesContainer');
+        const welcomeState = document.getElementById('welcomeState');
+        const typingIndicator = document.getElementById('typingIndicator');
+        const messageInput = document.getElementById('messageInput');
+        const sendBtn = document.getElementById('sendBtn');
+
+        // ==================== Functions ====================
+        function getCurrentTime() {
+            return new Date().toLocaleTimeString('ar-EG', {
+                hour: '2-digit',
+                minute: '2-digit',
+                hour12: true
+            });
+        }
+
+        function addMessage(role, content) {
+            welcomeState.style.display = 'none';
+
+            chatHistory.push({ role: role, content: content });
+
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${role}`;
+
+            // تحويل اللينكات لتكون قابلة للنقر
+            let formattedContent = content.replace(/\n/g, '<br>');
+            formattedContent = linkifyText(formattedContent);
+
+            messageDiv.innerHTML = `
+                <div class="message-bubble">${formattedContent}</div>
+                <div class="message-time">${getCurrentTime()}</div>
+            `;
+
+            messagesContainer.insertBefore(messageDiv, typingIndicator);
+            scrollToBottom();
+        }
+
+        function scrollToBottom() {
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        }
+
+        function showTyping() {
+            typingIndicator.classList.add('active');
+            scrollToBottom();
+        }
+
+        function hideTyping() {
+            typingIndicator.classList.remove('active');
+        }
+
+        function setLoading(loading) {
+            isLoading = loading;
+            sendBtn.disabled = loading;
+            messageInput.disabled = loading;
+            if (loading) {
+                showTyping();
+            } else {
+                hideTyping();
+            }
+        }
+
+        function prepareHistoryForAPI() {
+            return chatHistory.map(msg => ({
+                role: msg.role,
+                parts: [{ text: msg.content }]
+            }));
+        }
+
+        async function sendMessage() {
+            const message = messageInput.value.trim();
+            if (!message || isLoading) return;
+
+            messageInput.value = '';
+            messageInput.style.height = 'auto';
+
+            addMessage('user', message);
+            setLoading(true);
+
+            try {
+                const payload = { history: prepareHistoryForAPI() };
+
+                const response = await fetch(GOOGLE_SCRIPT_URL, {
+                    method: 'POST',
+                    body: JSON.stringify(payload)
+                });
+
+                const result = await response.json();
+
+                if (result && result.reply) {
+                    addMessage('ai', result.reply);
+                } else {
+                    addMessage('ai', '🤔 حصل مشكلة صغيرة، ممكن تبعت تاني؟');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                addMessage('ai', '🛑 حصل خطأ في الاتصال، جرب تاني يا بطل!');
+            } finally {
+                setLoading(false);
+            }
+        }
+
+        function sendSuggestion(text) {
+            messageInput.value = text;
+            sendMessage();
+        }
+
+        function clearChat() {
+            chatHistory = [];
+            const messages = messagesContainer.querySelectorAll('.message');
+            messages.forEach(msg => msg.remove());
+            welcomeState.style.display = 'block';
+        }
+
+        function handleKeyDown(event) {
+            if (event.key === 'Enter' && !event.shiftKey) {
+                event.preventDefault();
+                sendMessage();
+            }
+        }
+
+        // Auto-resize textarea
+        messageInput.addEventListener('input', function () {
+            this.style.height = 'auto';
+            this.style.height = Math.min(this.scrollHeight, 120) + 'px';
+        });
+
+        // تحويل اللينكات لروابط قابلة للنقر
+        function linkifyText(text) {
+            // نمط للتعرف على الروابط
+            const urlPattern = /(https?:\/\/[^\s<]+)/g;
+            return text.replace(urlPattern, '<a href="$1" target="_blank" rel="noopener noreferrer">$1</a>');
+        }
+
+        // Focus input on load
+        messageInput.focus();
+    </script>
+    
+    <!-- AOS Library -->
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 800,
+            easing: 'ease-out-cubic',
+            once: true,
+            offset: 50
+        });
+    </script>
+</body>
+
+</html>
