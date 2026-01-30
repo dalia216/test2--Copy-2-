@@ -48,8 +48,8 @@
     --gradient-primary: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
     --gradient-hero: linear-gradient(135deg, #1e40af 0%, #7c3aed 50%, #2563eb 100%);
     --gradient-hero-mesh: radial-gradient(ellipse at 20% 0%, rgba(37, 99, 235, 0.15) 0%, transparent 50%),
-                          radial-gradient(ellipse at 80% 100%, rgba(124, 58, 237, 0.1) 0%, transparent 50%),
-                          radial-gradient(ellipse at 0% 100%, rgba(6, 182, 212, 0.1) 0%, transparent 40%);
+        radial-gradient(ellipse at 80% 100%, rgba(124, 58, 237, 0.1) 0%, transparent 50%),
+        radial-gradient(ellipse at 0% 100%, rgba(6, 182, 212, 0.1) 0%, transparent 40%);
     --gradient-card: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%);
     --gradient-glow: radial-gradient(circle at 50% 50%, rgba(37, 99, 235, 0.3) 0%, transparent 70%);
     --gradient-text: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
@@ -132,7 +132,12 @@ body {
 }
 
 /* Headings use Tajawal */
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     font-family: 'Tajawal', 'Cairo', sans-serif;
     font-weight: 700;
     line-height: 1.4;
@@ -279,7 +284,7 @@ button {
     overflow: visible;
 }
 
-.nav-links > li {
+.nav-links>li {
     position: relative;
 }
 
@@ -333,7 +338,7 @@ button {
     position: relative !important;
 }
 
-.nav-dropdown > a {
+.nav-dropdown>a {
     cursor: pointer;
 }
 
@@ -368,8 +373,8 @@ button {
     margin: 0 !important;
 }
 
-.nav-dropdown:hover > .dropdown-menu,
-.nav-dropdown:focus-within > .dropdown-menu {
+.nav-dropdown:hover>.dropdown-menu,
+.nav-dropdown:focus-within>.dropdown-menu {
     opacity: 1;
     visibility: visible;
     transform: translateY(5px);
@@ -463,7 +468,7 @@ button {
     .nav-dropdown {
         position: relative !important;
     }
-    
+
     .dropdown-menu {
         display: block !important;
         position: absolute !important;
@@ -471,8 +476,8 @@ button {
         visibility: hidden;
         pointer-events: none;
     }
-    
-    .nav-dropdown:hover > .dropdown-menu {
+
+    .nav-dropdown:hover>.dropdown-menu {
         opacity: 1 !important;
         visibility: visible !important;
         pointer-events: auto !important;
@@ -497,7 +502,7 @@ button {
         width: 100% !important;
         height: 100vh !important;
         height: 100dvh !important;
-        background: linear-gradient(180deg, rgba(255,255,255,0.98) 0%, rgba(248,250,252,0.98) 100%) !important;
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.98) 0%, rgba(248, 250, 252, 0.98) 100%) !important;
         backdrop-filter: blur(20px) !important;
         -webkit-backdrop-filter: blur(20px) !important;
         display: flex !important;
@@ -511,11 +516,11 @@ button {
     }
 
     /* Checkbox Hack - When menu is open */
-    #menuToggle:checked ~ .navbar .nav-links {
+    #menuToggle:checked~.navbar .nav-links {
         right: 0 !important;
     }
-    
-    #menuToggle:checked ~ .navbar .nav-links li {
+
+    #menuToggle:checked~.navbar .nav-links li {
         opacity: 1 !important;
         transform: translateX(0) !important;
     }
@@ -528,14 +533,34 @@ button {
         transition: all 0.3s ease;
         list-style: none;
     }
-    
-    #menuToggle:checked ~ .navbar .nav-links li:nth-child(1) { transition-delay: 0.1s; }
-    #menuToggle:checked ~ .navbar .nav-links li:nth-child(2) { transition-delay: 0.15s; }
-    #menuToggle:checked ~ .navbar .nav-links li:nth-child(3) { transition-delay: 0.2s; }
-    #menuToggle:checked ~ .navbar .nav-links li:nth-child(4) { transition-delay: 0.25s; }
-    #menuToggle:checked ~ .navbar .nav-links li:nth-child(5) { transition-delay: 0.3s; }
-    #menuToggle:checked ~ .navbar .nav-links li:nth-child(6) { transition-delay: 0.35s; }
-    #menuToggle:checked ~ .navbar .nav-links li:nth-child(7) { transition-delay: 0.4s; }
+
+    #menuToggle:checked~.navbar .nav-links li:nth-child(1) {
+        transition-delay: 0.1s;
+    }
+
+    #menuToggle:checked~.navbar .nav-links li:nth-child(2) {
+        transition-delay: 0.15s;
+    }
+
+    #menuToggle:checked~.navbar .nav-links li:nth-child(3) {
+        transition-delay: 0.2s;
+    }
+
+    #menuToggle:checked~.navbar .nav-links li:nth-child(4) {
+        transition-delay: 0.25s;
+    }
+
+    #menuToggle:checked~.navbar .nav-links li:nth-child(5) {
+        transition-delay: 0.3s;
+    }
+
+    #menuToggle:checked~.navbar .nav-links li:nth-child(6) {
+        transition-delay: 0.35s;
+    }
+
+    #menuToggle:checked~.navbar .nav-links li:nth-child(7) {
+        transition-delay: 0.4s;
+    }
 
     .nav-links li a {
         display: flex !important;
@@ -554,7 +579,7 @@ button {
         transition: var(--transition) !important;
         text-decoration: none !important;
     }
-    
+
     .nav-links li a::before {
         display: none !important;
     }
@@ -567,12 +592,12 @@ button {
         transform: scale(1.02) !important;
         box-shadow: var(--shadow-primary) !important;
     }
-    
+
     /* Mobile Dropdown */
     .nav-dropdown {
         position: relative;
     }
-    
+
     .dropdown-menu {
         position: static !important;
         opacity: 1 !important;
@@ -585,43 +610,43 @@ button {
         min-width: auto !important;
         display: none;
     }
-    
+
     .nav-dropdown.open .dropdown-menu {
         display: block;
     }
-    
+
     .dropdown-menu li {
         max-width: 280px;
         margin: 0 auto;
     }
-    
+
     .dropdown-menu li a {
         font-size: 0.95rem !important;
         padding: 12px 20px !important;
         background: var(--gray-50) !important;
         border: 1px solid var(--gray-200) !important;
     }
-    
+
     .dropdown-arrow {
         transition: var(--transition);
     }
-    
+
     .nav-dropdown.open .dropdown-arrow {
         transform: rotate(180deg);
     }
-    
+
     /* Menu Icon X Transform */
-    #menuToggle:checked ~ .navbar .menu-icon span:nth-child(1) {
+    #menuToggle:checked~.navbar .menu-icon span:nth-child(1) {
         transform: rotate(45deg) translate(5px, 6px);
         background: #ef4444;
     }
-    
-    #menuToggle:checked ~ .navbar .menu-icon span:nth-child(2) {
+
+    #menuToggle:checked~.navbar .menu-icon span:nth-child(2) {
         opacity: 0;
         transform: scaleX(0);
     }
-    
-    #menuToggle:checked ~ .navbar .menu-icon span:nth-child(3) {
+
+    #menuToggle:checked~.navbar .menu-icon span:nth-child(3) {
         transform: rotate(-45deg) translate(5px, -6px);
         background: #ef4444;
     }
@@ -632,6 +657,7 @@ button {
         opacity: 0;
         transform: translateX(30px);
     }
+
     to {
         opacity: 1;
         transform: translateX(0);
@@ -719,8 +745,15 @@ button {
 }
 
 @keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-5px); }
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-5px);
+    }
 }
 
 .hero-title {
@@ -785,7 +818,7 @@ button {
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
     transition: 0.5s;
 }
 
@@ -1010,7 +1043,7 @@ button {
 
 .service-desc {
     font-size: 0.95rem;
-    color: var(--gray-500);
+    color: #475569;
     line-height: 1.7;
     margin-bottom: 28px;
     min-height: 50px;
@@ -1077,8 +1110,15 @@ button {
 }
 
 @keyframes pulse {
-    0%, 100% { box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.4); }
-    50% { box-shadow: 0 0 0 10px rgba(37, 99, 235, 0); }
+
+    0%,
+    100% {
+        box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.4);
+    }
+
+    50% {
+        box-shadow: 0 0 0 10px rgba(37, 99, 235, 0);
+    }
 }
 
 /* ===== Pricing Section ===== */
@@ -1710,7 +1750,7 @@ details[open] .faq-content {
     z-index: 2;
     transition: 0.3s;
     border-radius: 10px;
-    color: #64748b;
+    color: #94a3b8;
 }
 
 .toggle-option.active {
@@ -1995,22 +2035,25 @@ details[open] .faq-content {
 
 .item-name {
     font-weight: 800;
-    font-size: 13px;
+    font-size: 14px;
     color: #1e293b;
+    margin-bottom: 2px;
 }
 
 .item-macros {
     display: flex;
-    gap: 6px;
-    font-size: 10px;
+    gap: 8px;
+    flex-wrap: wrap;
+    font-size: 11px;
     font-weight: 700;
 }
 
 .badge {
-    padding: 2px 6px;
-    border-radius: 4px;
+    padding: 3px 8px;
+    border-radius: 5px;
     background: #f1f5f9;
     color: #64748b;
+    white-space: nowrap;
 }
 
 .b-cal {
@@ -2048,17 +2091,17 @@ details[open] .faq-content {
     background: var(--primary);
     color: white;
     border: none;
-    width: 46px;
-    height: 46px;
-    border-radius: 10px;
-    font-size: 24px;
+    width: 56px;
+    height: 56px;
+    border-radius: 12px;
+    font-size: 28px;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
     transition: 0.2s;
     flex-shrink: 0;
-    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
+    box-shadow: 0 6px 16px rgba(37, 99, 235, 0.3);
 }
 
 .add-btn:hover {
@@ -2267,7 +2310,8 @@ details[open] .faq-content {
     cursor: pointer;
     display: flex;
     align-items: center;
-    gap: 6px;
+    flex-direction: row-reverse;
+    gap: 8px;
     font-family: 'Tajawal', sans-serif;
     font-size: 14px;
     height: 45px;
@@ -2552,6 +2596,7 @@ details[open] .faq-content {
         opacity: 0;
         transform: translateY(20px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -2564,6 +2609,7 @@ details[open] .faq-content {
         opacity: 0;
         transform: scale(0.9);
     }
+
     to {
         opacity: 1;
         transform: scale(1);
@@ -2576,6 +2622,7 @@ details[open] .faq-content {
         opacity: 0;
         transform: translateX(50px);
     }
+
     to {
         opacity: 1;
         transform: translateX(0);
@@ -2584,9 +2631,12 @@ details[open] .faq-content {
 
 /* Glow Pulse */
 @keyframes glowPulse {
-    0%, 100% {
+
+    0%,
+    100% {
         box-shadow: 0 0 20px rgba(37, 99, 235, 0.3);
     }
+
     50% {
         box-shadow: 0 0 40px rgba(37, 99, 235, 0.5);
     }
@@ -2594,9 +2644,12 @@ details[open] .faq-content {
 
 /* Floating Animation */
 @keyframes floating {
-    0%, 100% {
+
+    0%,
+    100% {
         transform: translateY(0);
     }
+
     50% {
         transform: translateY(-10px);
     }
@@ -2607,6 +2660,7 @@ details[open] .faq-content {
     0% {
         background-position: -200% 0;
     }
+
     100% {
         background-position: 200% 0;
     }
@@ -2693,8 +2747,8 @@ details[open] .faq-content {
 /* Neon Glow */
 .neon-glow {
     text-shadow: 0 0 10px rgba(37, 99, 235, 0.5),
-                 0 0 20px rgba(37, 99, 235, 0.3),
-                 0 0 30px rgba(37, 99, 235, 0.1);
+        0 0 20px rgba(37, 99, 235, 0.3),
+        0 0 30px rgba(37, 99, 235, 0.1);
 }
 
 /* Skeleton Loading */
@@ -2763,15 +2817,17 @@ details[open] .faq-content {
 
 /* Print Styles */
 @media print {
-    .navbar, .footer {
+
+    .navbar,
+    .footer {
         display: none !important;
     }
-    
+
     body {
         background: white !important;
         color: black !important;
     }
-    
+
     * {
         box-shadow: none !important;
     }
@@ -2779,6 +2835,7 @@ details[open] .faq-content {
 
 /* Reduced Motion */
 @media (prefers-reduced-motion: reduce) {
+
     *,
     *::before,
     *::after {
@@ -2786,7 +2843,7 @@ details[open] .faq-content {
         animation-iteration-count: 1 !important;
         transition-duration: 0.01ms !important;
     }
-    
+
     .hero-img {
         animation: none;
     }
@@ -2827,9 +2884,12 @@ details[open] .faq-content {
 }
 
 @keyframes pulse-whatsapp {
-    0%, 100% {
+
+    0%,
+    100% {
         box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
     }
+
     50% {
         box-shadow: 0 4px 30px rgba(37, 211, 102, 0.6), 0 0 0 10px rgba(37, 211, 102, 0.1);
     }
@@ -2882,19 +2942,19 @@ details[open] .faq-content {
         bottom: 90px;
         left: 15px;
     }
-    
+
     .whatsapp-float svg {
         width: 28px;
         height: 28px;
     }
-    
+
     .scroll-to-top {
         width: 45px;
         height: 45px;
         bottom: 20px;
         left: 15px;
     }
-    
+
     .scroll-to-top svg {
         width: 20px;
         height: 20px;
